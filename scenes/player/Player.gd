@@ -11,7 +11,7 @@ export var FRICTION := 300
 export var ROTATION_SPEED := 10
 
 export var HEALTH := 100
-# export var bullet_scene: PackedScene
+export var bullet_scene: PackedScene
 
 var bullet_speed = 400
 var velocity := Vector2.ZERO
@@ -52,9 +52,10 @@ func rotate(delta: float) -> void:
 func shoot(_delta: float) -> void:
 	# shoot
 	if Input.is_action_just_pressed("attack"):
-#		var bullet = bullet_scene.instance()
-#		bullet.set_global_position($GunNozzle.get_global_position())
-#		get_parent().add_child(bullet)
+		var bullet = bullet_scene.instance()
+		bullet.set_global_position($GunSight.get_global_position())
+		get_parent().add_child(bullet)
+		bullet.start($GunSight.global_position, rotation)
 #		bullet.set_linear_velocity(Vector2(sin(rotation) * bullet_speed, cos(rotation) * bullet_speed))
-		emit_signal("shoot")
+#		emit_signal("shoot")
 
